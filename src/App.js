@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUp from './page/SignUp';
-import UserList from './page/UserList';
+import UserList from './page/UserList'; 
 function App() {
   return (
     <Router>
@@ -12,7 +12,7 @@ function App() {
       </div> */}
       <Routes>
         <Route path="/" Component={UserList} />
-        <Route path="/signUp" Component={SignUp} />
+        <Route path="/signUp" Component={SignUp} /> 
       </Routes>
     </Router>
   );
