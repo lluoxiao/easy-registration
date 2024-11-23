@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useMemo } from 'react'
+import { useState, useEffect, useLayoutEffect, useMemo, useCallback } from 'react'
 
 const App = () => {
   // 第一个值是state的值，第二个值是修改state的方法
@@ -10,6 +10,10 @@ const App = () => {
   const cacheValue = useMemo(() => {
     return Math.random()
   }, [current])
+  // 缓存函数
+  const cacheCallback = useCallback(() => {
+    console.log('---')
+  }, [])
 
   //回调和直接传值的区别是，直接传值可能会有更新合并的情况，而回调不会出现合并。
   const handleClick = (type) => {
@@ -32,6 +36,7 @@ const App = () => {
   // 不传第二个参数依赖项时，则表示每一次刷新都会触发回调
   // 之后会在每次依赖项发生变化时，触发回调 
   // 异步
+  // 在render之后执行
   useEffect(() => {
     if (current == 0) {
       setCurrent(current + 1)
@@ -44,6 +49,7 @@ const App = () => {
   // 如果是使用useEffect，会发现有一个current从0到一个随机数的跳闪的过程  
   // 使用此hook则不会发生这样的情况，因为他会先改变了值之后才render  
   // 同步
+  // 在dom更新之后执行
   useLayoutEffect(() => {
     if (current == 0) {
       setCurrent(Math.random())
