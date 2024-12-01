@@ -7,7 +7,7 @@ function useGetValue(initial) {
   const valueRef = useRef(value)
   // 每次value 更新就赋值到ref 
   // 赋值是赋值在ref.current上
-  //valueRef.current = value
+  // valueRef.current = value
 
   // useCallback 缓存函数  减少回调函数对子组件渲染影响
   // 当传递的回调函数无依赖变化的情况下，每次都是返回第一次创建的值，组件渲染减少
